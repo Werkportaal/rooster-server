@@ -38,6 +38,7 @@ jobs:
   publish_image:
     needs: [test]
     runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
     permissions:
       contents: read
       packages: write
@@ -52,7 +53,7 @@ jobs:
       - name: Log in to the Container registry
         uses: docker/login-action@v1
         with:
-          registry: ${{ env.REGISTRY }}
+          registry: ghcr.io/werkportaal/rooster-server:main
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: Extract metadata (tags, labels) for Docker
