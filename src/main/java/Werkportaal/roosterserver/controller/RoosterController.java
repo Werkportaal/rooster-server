@@ -3,9 +3,7 @@ package Werkportaal.roosterserver.controller;
 
 import Werkportaal.roosterserver.model.Rooster;
 import Werkportaal.roosterserver.service.RoosterService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -23,4 +21,11 @@ public class RoosterController {
     public List<Rooster> findAll() {
         return roosterService.findAll();
     }
+
+    @PostMapping("/test")
+    public void test(@RequestBody String text){
+        System.out.println(text);
+        roosterService.testRabitMQ(text);
+    }
+
 }
