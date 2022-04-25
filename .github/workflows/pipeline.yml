@@ -2,6 +2,10 @@ name: pipeline
 
 on: push
 
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ${{ github.repository }}
+
 jobs:
   #  analyse:
   #    runs-on: ubuntu-latest
