@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/rooster")
+@RequestMapping(value = "/rooster", method = { RequestMethod.GET, RequestMethod.POST })
 public class RoosterController {
 
     RoosterService roosterService;

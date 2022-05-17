@@ -15,7 +15,7 @@ import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 
 @SpringBootApplication
-@ComponentScan({"com"})
+//@ComponentScan({"com"})
 @EnableJpaRepositories()
 public class RoosterServerApplication {
 
@@ -32,6 +32,7 @@ public class RoosterServerApplication {
 	// This is the Amqp template
 	@Bean
 	public AmqpTemplate amqpTemplate(ConnectionFactory connectionFactory){
+
 		final RabbitTemplate rabbitTemplate = new RabbitTemplate(connectionFactory);
 		ObjectMapper mapper =
 				new ObjectMapper()
