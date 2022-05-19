@@ -24,8 +24,7 @@ public class RoosterController {
 
     @PostMapping("/test")
     public void test(@RequestBody String text){
-        System.out.println(text);
+        System.out.println("Rooster server:" + text);
         roosterService.testRabitMQ(text);
     }
-
 }

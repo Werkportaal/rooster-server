@@ -1,6 +1,12 @@
 name: pipeline
 
-on: push
+on:
+  push:
+    branches: ['rabbitmq']
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ${{ github.repository }}
 
 jobs:
   #  analyse:
