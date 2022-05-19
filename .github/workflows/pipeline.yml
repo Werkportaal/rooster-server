@@ -2,7 +2,7 @@ name: pipeline
 
 on:
   push:
-    branches: ['rabbitmq']
+    branches: ['main']
 
 env:
   REGISTRY: ghcr.io
