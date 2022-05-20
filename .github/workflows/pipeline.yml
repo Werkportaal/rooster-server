@@ -2,16 +2,11 @@ name: pipeline
 
 on:
   push:
-    branches: ['main']
+    branches: ['feature/WER-17-sonar-qube']
 
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
-
-env:
-  REGISTRY: ghcr.io
-  IMAGE_NAME: ${{ github.repository }}
-
 
 #werkportaal sonar ww
 jobs:
