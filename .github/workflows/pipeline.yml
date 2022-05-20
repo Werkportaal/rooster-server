@@ -3,45 +3,50 @@ name: pipeline
 on:
   push:
     branches: ['feature/WER-17-sonar-qube']
-
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
 
 jobs:
-  #  analyse:
-  #    runs-on: ubuntu-latest
-  #
-  #    steps:
-  #      - name: Checkout 🛎️
-  #        uses: actions/checkout@v2
-  #        with:
-  #          persist-credentials: false
-  #
-  #      - name: SonarQube 💃
-  #        env:
-  #          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
-  #          SONAR_TOKEN: ${{ secrets.SONARQUBE_SECRET_TOKEN }}
-  #          SONAR_HOST_URL: ${{ secrets.SONARQUBE_HOST }}
-  #        run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=K4CZP3R_s6p-create-service_AX_5cOyx4Hw7FhtMoV9A
+#  analyse:
+#    runs-on: ubuntu-latest
+#
+#    steps:
+#      - name: Checkout 🛎️
+#        uses: actions/checkout@v2
+#        with:
+#          persist-credentials: false
+#
+#      - name: SonarQube 💃
+#        env:
+#          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
+#          SONAR_TOKEN: ${{ secrets.SONARQUBE_SECRET_TOKEN }}
+#          SONAR_HOST_URL: ${{ secrets.SONARQUBE_HOST }}
+#        run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar
+
   test:
-    #    needs: [analyse]
+#    needs: [analyse]
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout 🛎️
         uses: actions/checkout@v2
         with:
           persist-credentials: false
+
       - name: Build 👷
         run: mvn package
+
       - name: Test 🥺
         run: mvn test
+
   publish_image:
-    needs: [test]
+#    needs: [analyse, test]
     runs-on: ubuntu-latest
     permissions:
       contents: read
       packages: write
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
@@ -52,7 +57,7 @@ jobs:
       - name: Log in to the Container registry
         uses: docker/login-action@v1
         with:
-          registry: ghcr.io/werkportaal/rooster-server:main
+          registry: ghcr.io/k4czp3r/s6p-create-service:main
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: Extract metadata (tags, labels) for Docker
