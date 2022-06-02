@@ -14,6 +14,7 @@ import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 
+
 @SpringBootApplication
 //@ComponentScan({"com"})
 @EnableJpaRepositories()
